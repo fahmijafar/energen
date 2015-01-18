@@ -25,16 +25,17 @@ public class LoginController {
 			@RequestParam("password")String password) {
 		String message = "Invalid credentials";
 		
-		if (!username.equals("") && !password.equals("")) {
-			if (username.equals(password)) {
-				message = "Welcome " + username + "!!";
-			}
-		}
-		User user = defaultUserService.find(username);
+//		if (!username.equals("") && !password.equals("")) {
+//			if (username.equals(password)) {
+//				message = "Welcome " + username + "!!";
+//			}
+//		}
+		User user = defaultUserService.find(username, password);
 		if (user != null) {
 			System.out.println("UserID : " + user.getUserId());
 			System.out.println("UserName : " + user.getUsername());
 			System.out.println("Password : " + user.getPassword());
+			message = "Welcome " + username + "!!";
 		} else {
 			System.out.println("not found");
 		}
